@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import PostText from './PostText'
+import PostDeleteButton from './PostDeleteButton'
 
 function Post(props) {
 
@@ -13,12 +15,11 @@ function Post(props) {
 
     return <p>
         {props.postData.author}<br/>
-        💬{props.postData.text}<br/>
+        <PostText text={props.postData.text}/>
         {likes}
         <span onClick={onClickLikePostHandler}>{isLiked ? '👎🏻':'👍🏼'}</span>
     
-        <span onClick={() => props.deletePost(props.postData.id)}>❌</span>
-
+        <PostDeleteButton postId={props.postData.id} deletePost={props.deletePost} />
     </p>
 }
 
