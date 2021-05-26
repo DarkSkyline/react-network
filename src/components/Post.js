@@ -15,7 +15,10 @@ function Post(props) {
         {props.postData.author}<br/>
         💬{props.postData.text}<br/>
         {likes}
-        <button onClick={onClickLikePostHandler}>{isLiked ? 'unlike':'like'}</button>
+        <span onClick={onClickLikePostHandler}>{isLiked ? '👎🏻':'👍🏼'}</span>
+    
+        <span onClick={() => props.deletePost(props.postData.id)}>❌</span>
+
     </p>
 }
 

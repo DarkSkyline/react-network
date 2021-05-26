@@ -10,7 +10,7 @@ function Header(props) {
     return (
         <>
             <h1>{title}</h1>
-            <button onClick={onClickHandler}>Cliquez ici</button>
+            <button onClick={onClickHandler}>Change title</button>
         </>
     )
 }
