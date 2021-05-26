@@ -31,7 +31,9 @@ function Feed(props) {
         setPosts(posts.filter(p => p.id !== id))
     }
 
-
+    const addPost = (post) => {
+        setPosts([...posts, post])
+    }
     
     return posts.length > 0 ? 
         (
