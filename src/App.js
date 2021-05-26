@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+
+import Post from './components/Post'
+import Header from './components/Header'
+
+let initalPosts = [
+  {
+    id: 1,
+    text: 'bonjour tout le monde!',
+    likes: 30,
+    author: 'Filipe Ferreira'
+  },
+  {
+    id: 4,
+    text: 'Vive le React',
+    likes: 9,
+    author: 'Jean Paul'
+  },
+  {
+    id: 55,
+    text: 'bonjour!',
+    likes: 2,
+    author: 'Antoine Dumont'
+  }
+]
 
 function App() {
+
+  const [posts, setPosts] = useState(initalPosts)
+
+  const deletePost = (id) => {
+    setPosts(posts.filter(p => p.id != 55))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header />
+      <h3>Fil d'actualité</h3>
+      <button onClick={deletePost}>Delete post 55</button>
+      {posts.map(p => <Post postData={p} key={p.id}/>)}
+    </>
+  )
 }
 
 export default App;
