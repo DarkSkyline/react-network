@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function CreatePost() {
+function CreatePost({ addPost }) {
 
     const [postText, setPostText] = useState('')
 
@@ -8,10 +8,15 @@ function CreatePost() {
         setPostText(event.target.value)
     }
 
+    const createPostHandler = (event) => {
+        addPost(postText)
+        setPostText('')
+    }
+
     return (
         <>
             <input onChange={onChangeHandler} type="text" value={postText} placeholder="Title of Post"/>
-            <span>✅</span>
+            {postText.trim() !== '' && <span onClick={createPostHandler}>✅</span>}
         </>
     )
 }
