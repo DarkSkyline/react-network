@@ -3,6 +3,8 @@ import { ReactComponent as EmptyImageSVG } from '../images/empty.svg'
 
 function Feed({posts, deletePost}) {
     
+    posts.sort((post1, post2) => post2.date.getTime() - post1.date.getTime())
+
     return posts.length > 0 ? 
         (
             <>
